@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.crypto.DecryptExample;
+import org.example.crypto.EncryptExample;
 import org.example.utils.ConsoleColors;
 import org.example.utils.NumberUtils;
 import org.example.utils.Utils;
@@ -36,6 +38,9 @@ public class Main {
         // --- NAMES / LOGGING ---
         Utils.printSection("NAMES / LOGGING", ConsoleColors.YELLOW);
         demoNamesAndLogging();
+
+        // --- Encrypt Result ---
+        Utils.printSection("Encrypt/Decrypt" , ConsoleColors.MAGENTA);
 
         Utils.log("Program finished");
     }
@@ -104,5 +109,24 @@ public class Main {
         }
         System.out.println(Utils.capitalize(name1));
         System.out.println(Utils.capitalize(name2));
+    }
+
+    public static void demoEncryptDecrypt() {
+        String plaintext = "This is a secret message";
+        String password  = "VeryStrongPassword123";
+
+        Utils.log("Plaintext : " + plaintext);
+        Utils.log("Password  : " + password);
+
+        String key = "8RjoRTxmRJLH...";
+        String text = "Hello Hydra!";
+
+        String encrypted = EncryptExample.encrypt(text, key);
+        String decrypted = DecryptExample.decrypt(encrypted, key);
+
+        Utils.printSection("Encrypt/Decrypt", ConsoleColors.MAGENTA);
+        Utils.log("Encrypted: " + encrypted);
+        Utils.log("Decrypted: " + decrypted);
+
     }
 }
